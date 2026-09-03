@@ -97,14 +97,16 @@ export function Overview() {
                     <Icon className="size-4.5" />
                   </div>
                 </div>
-                <div className="flex items-end justify-between gap-2">
-                  <span className="min-w-0 truncate font-mono text-xl font-semibold tabular-nums tracking-tight">
-                    {formatCurrency(card.value, lang)}
-                  </span>
+                <span className="font-mono text-2xl font-semibold tabular-nums tracking-tight">
+                  {formatCurrency(card.value, lang)}
+                </span>
+                <div className="flex items-center gap-2">
                   <span
                     className={cn(
-                      "mb-0.5 inline-flex shrink-0 items-center gap-0.5 text-xs font-medium",
-                      positive ? "text-credit" : "text-destructive",
+                      "inline-flex shrink-0 items-center gap-0.5 rounded-md px-1.5 py-0.5 text-xs font-medium",
+                      positive
+                        ? "bg-credit/12 text-credit"
+                        : "bg-destructive/12 text-destructive",
                     )}
                   >
                     {positive ? (
@@ -114,10 +116,10 @@ export function Overview() {
                     )}
                     {Math.abs(card.delta).toFixed(1)}%
                   </span>
+                  <span className="truncate text-xs text-muted-foreground">
+                    {t.vsLastMonth}
+                  </span>
                 </div>
-                <span className="text-xs text-muted-foreground">
-                  {t.vsLastMonth}
-                </span>
               </CardContent>
             </Card>
           )

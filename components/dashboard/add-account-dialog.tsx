@@ -140,7 +140,11 @@ export function AddAccountDialog({ onAdd }: AddAccountDialogProps) {
                   onValueChange={(v) => setCategory(v as CategoryKey)}
                 >
                   <SelectTrigger className="w-full">
-                    <SelectValue placeholder={t.selectCategory} />
+                    <SelectValue placeholder={t.selectCategory}>
+                      {(v: string) =>
+                        categoryOptions.find((o) => o.value === v)?.label
+                      }
+                    </SelectValue>
                   </SelectTrigger>
                   <SelectContent>
                     <SelectGroup>
@@ -173,7 +177,11 @@ export function AddAccountDialog({ onAdd }: AddAccountDialogProps) {
                 onValueChange={(v) => setType(v as AccountType)}
               >
                 <SelectTrigger className="w-full">
-                  <SelectValue placeholder={t.selectType} />
+                  <SelectValue placeholder={t.selectType}>
+                    {(v: string) =>
+                      typeOptions.find((o) => o.value === v)?.label
+                    }
+                  </SelectValue>
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
